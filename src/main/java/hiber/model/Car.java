@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "cars")
+@Table(name = "Car")
 public class Car {
 
     @Id
@@ -58,18 +58,15 @@ public class Car {
 
     public User setUser(User user) {
         this.user = user;
-
         return user;
     }
 
     @Override
     public String toString() {
-        return "Car{"+
-                "id="+ id +
-                ", model='"+ model + '\'' +
-                ", series="+ series +
-                ", user="+ user +
-                '}';
+        return "Car " + user.getFirstName() +
+                "\n id = " + id +
+                "\n model = '" + model + '\'' +
+                "\n series = " + series + "\n";
     }
 
     @Override
@@ -77,11 +74,11 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return series == car.series && Objects.equals(id, car.id) && Objects.equals(model, car.model)&& Objects.equals(user, car.user);
+        return series == car.series && Objects.equals(id, car.id) && Objects.equals(model, car.model);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, model, series, user);
+        return Objects.hash(id, model, series);
     }
 }
